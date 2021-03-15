@@ -1,0 +1,41 @@
+<form [formGroup]="formContact" (ngSubmit)="submit()">
+    <div>
+        <label>firstName</label>
+        <input formControlName="firstName" type="text">
+    </div>
+    <div>
+        <label>lastName</label>
+        <input formControlName="lastName" type="text">
+    </div>
+    <div formGroupName="address">
+        <h2>Address</h2>
+        <div>
+            <label>street</label>
+            <input formControlName="street" type="text">
+        </div>
+        <div>
+            <label>city</label>
+            <input formControlName="city" type="text">
+        </div>
+        <div>
+            <label>state</label>
+            <input formControlName="state" type="text">
+        </div>
+        <div>
+            <label>zip</label>
+            <input formControlName="zip" type="text">
+        </div>
+    </div>
+    <div>
+        <h2 [ngClass]="{'invalid': formContact.controls.aliases.invalid && formContact.controls.aliases.touched}">Aliases</h2>
+        <button (click)="addAlias()">+</button>
+        <div *ngFor="let aliasCtrl of formContact.controls.aliases['controls']; let index = index;">
+            <label>Alias:</label>
+            <input type="text" [formControl]=aliasCtrl>
+            <button (click)="removeAlias(index)">-</button>
+        </div>
+    </div>
+    <div>
+        <button type="submit">Send</button>
+    </div>
+</form>

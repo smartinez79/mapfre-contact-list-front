@@ -1,0 +1,25 @@
+<table *ngIf="showList">
+    <tr>
+        <td>
+            firstName
+        </td>
+        <td>
+            lastName
+        </td>
+        <td>
+            actions
+        </td>
+    </tr>
+    <tr *ngFor="let contact of contacts">
+        <td>
+            {{contact.firstName}}
+        </td>
+        <td>
+            {{contact.lastName}}
+        </td>
+        <td>
+            <button (click)="editContact(contact)">edit</button>
+        </td>
+    </tr>
+</table>
+<app-edit-contact (backEvent)="resetContact()" [contact]="contactSelect" *ngIf="!showList"></app-edit-contact>
