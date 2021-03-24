@@ -14,7 +14,7 @@ export class NewContactComponent implements OnInit {
   }
 
   newContact($event){
-    this.contactSrv.newContact($event).then((result)=>{
+    this.contactSrv.newContact($event).toPromise().then((result)=>{
       alert('Creado correctamente');
     }).catch((err)=>{
       alert(JSON.stringify(err));

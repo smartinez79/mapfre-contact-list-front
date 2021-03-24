@@ -17,8 +17,8 @@ export class ContactListComponent implements OnInit {
   constructor(public contactSrv: ContactService) { }
 
   ngOnInit(): void {
-    this.contactSrv.getAllContacts().then((response: Contact[]) => {
-      this.contacts = response
+    this.contactSrv.getAllContacts().toPromise().then((response: Contact[]) => {
+      this.contacts = response;
     }).catch((err) => {
       alert(JSON.stringify(err));
     });

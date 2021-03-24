@@ -22,7 +22,7 @@ export class EditContactComponent implements OnInit {
   }
 
   editContact($event: Contact) {
-    this.contactSrv.updateContact($event).then((result) => {
+    this.contactSrv.updateContact($event).toPromise().then((result) => {
       alert('Contacto con id ' + $event.id + ' actualizado correctamente');
       this.backToList();
     }).catch((err) => {
