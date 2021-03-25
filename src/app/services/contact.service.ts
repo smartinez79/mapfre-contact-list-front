@@ -16,6 +16,6 @@ export class ContactService {
     return this.http.post<Contact>('/api/people', contact);
   }
   updateContact(contact: Contact) {
-    return this.http.put<Contact>('/api/people', contact);
+    return this.http.put<Contact>('/api/people' + contact.id, contact);
   }
 }
